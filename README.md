@@ -1,43 +1,46 @@
 # 🚨 SOS Beacon
 
-An embedded emergency alert system designed to enhance personal safety by enabling users to quickly send an SOS signal during emergencies. The system demonstrates the application of embedded systems and IoT technologies to provide reliable and rapid emergency communication.
+An embedded emergency alert system designed to enhance personal safety by enabling users to quickly send an SOS signal during emergencies. The system uses GPS technology to determine the user's location and can be integrated with emergency communication systems to provide rapid assistance.
 
 ---
 
 ## 📖 Overview
 
-The SOS Beacon is a portable safety device that allows a user to trigger an emergency alert with the press of a button. The device can notify predefined contacts with the user's location and activate local indicators such as LEDs or a buzzer, depending on the hardware configuration.
+The SOS Beacon is a portable embedded safety device developed using Arduino. It detects emergency situations through a manual SOS trigger and an accelerometer sensor. Upon activation, the system acquires the user's live location using a GPS module, making it easier for responders or guardians to locate the user during emergencies.
+
+This project demonstrates the practical application of embedded systems in personal safety and emergency response.
 
 ---
 
 ## 🎯 Objectives
 
-- Provide a quick emergency response mechanism.
-- Improve personal safety using embedded technology.
-- Demonstrate practical implementation of IoT and embedded systems.
-- Develop a reliable and user-friendly emergency alert solution.
+- Develop a reliable personal safety device.
+- Obtain real-time location using GPS.
+- Detect emergency situations using sensor inputs.
+- Demonstrate embedded system integration for real-world applications.
 
 ---
 
 ## ✨ Features
 
 - 🚨 One-touch SOS activation
-- 📍 Real-time location sharing *(if GPS was used)*
-- 📱 Emergency notification *(if GSM/Wi-Fi was used)*
-- 🔔 Visual and audible emergency indication
-- 🔋 Portable and battery powered
+- 📍 Real-time location acquisition using GPS
+- 📈 Motion detection using an accelerometer
+- 🔋 Portable embedded hardware design
+- ⚡ Low-power microcontroller-based implementation
 
 ---
 
 ## 🛠️ Hardware Components
 
-- ESP32 *(or Arduino Uno — replace with what you used)*
-- GPS Module *(if applicable)*
-- GSM Module *(if applicable)*
+- Arduino Uno
+- Arduino Nano
+- NEO-8M GPS Module
+- Accelerometer Sensor
 - Push Button
-- Buzzer
 - LEDs
-- Battery
+- Buzzer
+- Battery/Power Supply
 
 ---
 
@@ -49,14 +52,25 @@ The SOS Beacon is a portable safety device that allows a user to trigger an emer
 
 ---
 
-## 📁 Repository Structure
+## 🔄 Working Principle
+
+1. The user presses the SOS button during an emergency.
+2. The Arduino processes the emergency request.
+3. The GPS module acquires the current location.
+4. The accelerometer monitors sudden movement or abnormal conditions.
+5. The collected information can be used by an emergency response system to provide assistance.
+
+---
+
+## 📂 Repository Structure
 
 ```
-SOS-Beacon/
-│── Code/
-│── Circuit_Diagram/
-│── Images/
-│── Documentation/
+SOS-Beacon
+│
+├── Code/
+├── Circuit_Diagram/
+├── Images/
+├── Documentation/
 └── README.md
 ```
 
@@ -64,16 +78,26 @@ SOS-Beacon/
 
 ## 📸 Project Images
 
-> Add screenshots of the hardware setup, circuit diagram, and working prototype here.
+### Hardware Setup
+
+(Add Image)
+
+### Circuit Diagram
+
+(Add Image)
+
+### Prototype
+
+(Add Image)
 
 ---
 
 ## 🚀 Future Improvements
 
+- GSM module for SMS alerts
 - Mobile application integration
 - Cloud-based emergency monitoring
-- Battery health monitoring
-- Multiple emergency contacts
+- Rechargeable battery management
 - Wearable implementation
 
 ---
