@@ -28,6 +28,13 @@ The system is designed for situations where cellular connectivity may
 be unavailable, such as remote areas and disaster-prone environments.
 
 ---
+---
+
+## 👩‍💻 My Role
+
+**Team Leader | Coder | Hardware Integration**
+
+---
 
 ## 🎯 Objectives
 
@@ -53,7 +60,6 @@ be unavailable, such as remote areas and disaster-prone environments.
 - 🔄 SOS acknowledgement mechanism
 - 🆔 Unique SOS signal identification
 - 📡 SOS forwarding between transmitter nodes
-
 ---
 
 ## 🏗️ System Architecture
@@ -90,6 +96,8 @@ GPS coordinates and sends an acknowledgement back through LoRa.
 
 ---
 
+---
+
 ## 🛠️ Hardware Components
 
 - Arduino Uno – Transmitter
@@ -102,7 +110,6 @@ GPS coordinates and sends an acknowledgement back through LoRa.
 - Buzzer
 - LED
 - Power Supply
-
 ---
 
 ## 💻 Software & Libraries
@@ -158,3 +165,46 @@ When the IDs match, the acknowledgement LED is activated.
 
 ```text
 SOS|<signal_ID>|<latitude>,<longitude>
+```
+
+### Acknowledgement
+
+```text
+ACK|<signal_ID>
+```
+```text
+ACK|<signal_ID>
+## 🔁 SOS Forwarding
+
+The transmitter code also supports forwarding SOS packets received from
+another transmitter.
+
+If an incoming SOS packet contains a different signal ID, the packet can
+be forwarded through LoRa.
+
+---
+---
+
+## 📊 Results & Outcome
+
+The SOS Beacon system was implemented and tested as an emergency
+communication prototype.
+
+Testing demonstrated the operation of the complete communication
+chain:
+
+- Motion monitoring at the transmitter
+- GPS coordinate acquisition
+- SOS transmission through LoRa
+- Reception and processing of emergency packets
+- GPS location display on the receiver LCD
+- Buzzer-based emergency alert
+- Acknowledgement transmission back to the transmitter
+
+The prototype was tested under different environmental conditions,
+including urban and open-field environments, to evaluate its
+communication and emergency alert functionality.
+
+The project demonstrates the feasibility of using Arduino, GPS and
+LoRa-based communication for emergency location reporting in situations
+where conventional cellular communication may be unavailable.
