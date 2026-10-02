@@ -1,109 +1,160 @@
-# 🚨 SOS Beacon
+# 🚨 SOS Beacon – Emergency Communication System
 
-An embedded emergency alert system designed to enhance personal safety by enabling users to quickly send an SOS signal during emergencies. The system uses GPS technology to determine the user's location and can be integrated with emergency communication systems to provide rapid assistance.
+An Arduino and LoRa-based emergency communication system designed to
+detect emergency situations and transmit GPS location information over
+long distances without relying on cellular networks.
 
 ---
 
 ## 📖 Overview
 
-The SOS Beacon is a portable embedded safety device developed using Arduino. It detects emergency situations through a manual SOS trigger and an accelerometer sensor. Upon activation, the system acquires the user's live location using a GPS module, making it easier for responders or guardians to locate the user during emergencies.
+The SOS Beacon is a wireless emergency alert system developed using
+Arduino, LoRa, GPS and an accelerometer.
 
-This project demonstrates the practical application of embedded systems in personal safety and emergency response.
+The system consists of two units:
+
+- **Transmitter Unit** – carried by the user
+- **Receiver Unit** – used by the rescuer or monitoring team
+
+The transmitter monitors motion using an accelerometer. When an emergency
+condition is detected, the system acquires the user's GPS coordinates
+and transmits an SOS message through LoRa.
+
+The receiver receives the SOS signal, extracts the GPS coordinates,
+displays them on a 16×2 I2C LCD, activates a buzzer and sends an
+acknowledgement back to the transmitter.
+
+The system is designed for situations where cellular connectivity may
+be unavailable, such as remote areas and disaster-prone environments.
 
 ---
 
 ## 🎯 Objectives
 
-- Develop a reliable personal safety device.
-- Obtain real-time location using GPS.
-- Detect emergency situations using sensor inputs.
-- Demonstrate embedded system integration for real-world applications.
+- Develop a long-range emergency communication system.
+- Detect emergency situations using motion monitoring.
+- Obtain real-time GPS location information.
+- Transmit emergency information using LoRa.
+- Display the user's location at the receiver.
+- Provide acknowledgement of received SOS signals.
+- Demonstrate embedded system integration for emergency communication.
 
 ---
 
 ## ✨ Features
 
-- 🚨 One-touch SOS activation
-- 📍 Real-time location acquisition using GPS
-- 📈 Motion detection using an accelerometer
-- 🔋 Portable embedded hardware design
-- ⚡ Low-power microcontroller-based implementation
+- 🚨 Automatic SOS detection
+- 📍 GPS-based location tracking
+- 📡 Long-range LoRa communication
+- 📈 Accelerometer-based motion monitoring
+- 🔊 Buzzer-based emergency alerts
+- 💡 LED acknowledgement indication
+- 📺 16×2 I2C LCD location display
+- 🔄 SOS acknowledgement mechanism
+- 🆔 Unique SOS signal identification
+- 📡 SOS forwarding between transmitter nodes
+
+---
+
+## 🏗️ System Architecture
+
+### Transmitter Unit
+
+The transmitter is built around an **Arduino Uno**.
+
+It interfaces with:
+
+- Accelerometer
+- GPS module
+- LoRa module
+- Push button
+- Buzzer
+- LED
+
+The transmitter monitors motion and generates an SOS event when the
+configured emergency condition is reached. It then obtains GPS
+coordinates and transmits the emergency information through LoRa.
+
+### Receiver Unit
+
+The receiver is built around an **Arduino Nano**.
+
+It interfaces with:
+
+- LoRa module
+- 16×2 I2C LCD
+- Buzzer
+
+The receiver processes incoming SOS packets, displays the transmitted
+GPS coordinates and sends an acknowledgement back through LoRa.
 
 ---
 
 ## 🛠️ Hardware Components
 
-- Arduino Uno
-- Arduino Nano
-- NEO-8M GPS Module
-- Accelerometer Sensor
+- Arduino Uno – Transmitter
+- Arduino Nano – Receiver
+- NEO-6M GPS Module
+- Accelerometer
+- SX1278 LoRa Module
+- 16×2 I2C LCD
 - Push Button
-- LEDs
 - Buzzer
-- Battery/Power Supply
+- LED
+- Power Supply
 
 ---
 
-## 💻 Software Used
+## 💻 Software & Libraries
 
 - Arduino IDE
-- Embedded C
+- Embedded C/C++
+- SPI
+- SoftwareSerial
+- TinyGPS++
+- LoRa
+- LiquidCrystal_I2C
 - Git & GitHub
 
 ---
 
 ## 🔄 Working Principle
 
-1. The user presses the SOS button during an emergency.
-2. The Arduino processes the emergency request.
-3. The GPS module acquires the current location.
-4. The accelerometer monitors sudden movement or abnormal conditions.
-5. The collected information can be used by an emergency response system to provide assistance.
+### Transmitter
+
+1. The accelerometer monitors motion.
+2. The Arduino tracks the duration of inactivity.
+3. When the configured emergency condition is reached, an SOS event is
+   generated.
+4. The GPS module provides the current latitude and longitude.
+5. A unique signal ID is generated for the SOS message.
+6. The SOS message containing the signal ID and GPS coordinates is
+   transmitted through LoRa.
+7. The transmitter activates the buzzer.
+8. The transmitter waits for an acknowledgement from the receiver.
+
+### Receiver
+
+1. The receiver continuously listens for LoRa packets.
+2. When an SOS packet is received, the signal ID and GPS coordinates
+   are extracted.
+3. The latitude and longitude are displayed on the 16×2 I2C LCD.
+4. The receiver activates the buzzer.
+5. An acknowledgement containing the SOS signal ID is transmitted back
+   through LoRa.
+
+### Acknowledgement
+
+The transmitter compares the received acknowledgement ID with the ID
+of the SOS message it transmitted.
+
+When the IDs match, the acknowledgement LED is activated.
 
 ---
 
-## 📂 Repository Structure
+## 📡 Communication Format
 
-```
-SOS-Beacon
-│
-├── Code/
-├── Circuit_Diagram/
-├── Images/
-├── Documentation/
-└── README.md
-```
+### SOS Message
 
----
-
-## 📸 Project Images
-
-### Hardware Setup
-
-(Add Image)
-
-### Circuit Diagram
-
-(Add Image)
-
-### Prototype
-
-(Add Image)
-
----
-
-## 🚀 Future Improvements
-
-- GSM module for SMS alerts
-- Mobile application integration
-- Cloud-based emergency monitoring
-- Rechargeable battery management
-- Wearable implementation
-
----
-
-## 👩‍💻 Author
-
-**Nupur Patankar**
-
-B.Tech Electronics & Communication Engineering
+```text
+SOS|<signal_ID>|<latitude>,<longitude>
