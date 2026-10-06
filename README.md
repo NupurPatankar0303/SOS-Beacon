@@ -64,6 +64,11 @@ be unavailable, such as remote areas and disaster-prone environments.
 
 ## 🏗️ System Architecture
 
+### 📐 Block Diagrams
+
+- [Transmitter Block Diagram](sos%20becan%20transmitter.pdf)
+- [Receiver Block Diagram](sos%20beacon.pdf)
+
 ### Transmitter Unit
 
 The transmitter is built around an **Arduino Uno**.
