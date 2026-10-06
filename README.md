@@ -163,7 +163,6 @@ of the SOS message it transmitted.
 When the IDs match, the acknowledgement LED is activated.
 
 ---
-
 ## 📡 Communication Format
 
 ### SOS Message
@@ -177,8 +176,7 @@ SOS|<signal_ID>|<latitude>,<longitude>
 ```text
 ACK|<signal_ID>
 ```
-```text
-ACK|<signal_ID>
+
 ## 🔁 SOS Forwarding
 
 The transmitter code also supports forwarding SOS packets received from
@@ -187,7 +185,6 @@ another transmitter.
 If an incoming SOS packet contains a different signal ID, the packet can
 be forwarded through LoRa.
 
----
 ---
 
 ## 📊 Results & Outcome
@@ -213,6 +210,7 @@ communication and emergency alert functionality.
 The project demonstrates the feasibility of using Arduino, GPS and
 LoRa-based communication for emergency location reporting in situations
 where conventional cellular communication may be unavailable.
+
 ---
 
 ## 📁 Repository Structure
@@ -230,4 +228,4 @@ SOS-Beacon/
 ├── sos beacon.pdf
 ├── sos becan transmitter.pdf
 └── README.md
-
+```
