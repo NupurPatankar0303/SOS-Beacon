@@ -213,3 +213,21 @@ communication and emergency alert functionality.
 The project demonstrates the feasibility of using Arduino, GPS and
 LoRa-based communication for emergency location reporting in situations
 where conventional cellular communication may be unavailable.
+---
+
+## 📁 Repository Structure
+
+```text
+SOS-Beacon/
+│
+├── Code/
+│   ├── Transmitter/
+│   │   └── transmitter.ino
+│   │
+│   └── Receiver/
+│       └── receiver.ino
+│
+├── sos beacon.pdf
+├── sos becan transmitter.pdf
+└── README.md
+
