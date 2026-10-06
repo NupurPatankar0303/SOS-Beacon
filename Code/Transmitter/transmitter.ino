@@ -1,3 +1,14 @@
+/*
+ * SOS Beacon - Transmitter
+ * Emergency communication system using LoRa and GPS
+ *
+ * Functions:
+ * - Motion monitoring using an accelerometer
+ * - GPS coordinate acquisition
+ * - SOS transmission through LoRa
+ * - SOS acknowledgement handling
+ * - SOS forwarding from other transmitter nodes
+ */
 #include <SPI.h>
 
 #include <LoRa.h>
@@ -32,7 +43,7 @@ SoftwareSerial gpsSerial(GPS_RX, GPS_TX);
 
 TinyGPSPlus gps;
 
-// === Variables ===
+// === System State Variables ===
 
 unsigned long lastMotionTime = 0;
 
