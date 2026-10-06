@@ -1,3 +1,14 @@
+/*
+ * SOS Beacon - Receiver
+ * Emergency communication system using LoRa and LCD
+ *
+ * Functions:
+ * - Receive SOS messages through LoRa
+ * - Extract GPS coordinates from received messages
+ * - Display latitude and longitude on a 16x2 I2C LCD
+ * - Send acknowledgement messages to the transmitter
+ * - Provide buzzer feedback when an SOS is received
+ */
 #include <SPI.h>
 
 #include <LoRa.h>
@@ -22,7 +33,7 @@
 
 LiquidCrystal_I2C lcd(0x27, 16, 2);  // Change address if needed
 
-// === Signal Tracking ===
+// === Signal and Acknowledgement Tracking ===
 
 String lastSignalID = "";
 
